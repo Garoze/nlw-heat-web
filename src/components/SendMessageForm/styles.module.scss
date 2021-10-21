@@ -1,0 +1,144 @@
+$form-background-color: #1b1b1f;
+$form-color: #c4c4cc;
+$send-message-background-color: #202124;
+$send-message-label: #29292e;
+$text-area-color: #e1e1e6;
+$text-area-placeholder-color: #8d8d99;
+
+$background-color: #17171a;
+
+$signIn-text-color: #09090a;
+$signIn-background-color: #ffcd1e;
+
+$send-message-button-background: #ff008e;
+// $send-message-button-color:
+
+.sendMessageFormWrapper {
+  background-color: $form-background-color;
+  padding: 1.5rem;
+  align-self: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  position: relative;
+}
+
+.signOutButton {
+  background-color: transparent;
+  border: 0;
+  color: $form-color;
+
+  position: absolute;
+  left: 1.5rem;
+  top: 1.5rem;
+
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
+
+.userInformation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .userImage {
+    padding: 3px;
+    background: linear-gradient(100deg, #ff008e 0%, #ffcd1e 100%);
+    border-radius: 50%;
+    line-height: 0;
+
+    img {
+      width: 5.874rem;
+      height: 5.875rem;
+      border-radius: 50%;
+      border: 6px solid #121214;
+    }
+  }
+
+  .userName {
+    font-size: 1.5rem;
+    line-height: 1.875rem;
+    margin-top: 1rem;
+  }
+
+  .userGithub {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+    color: $form-color;
+
+    svg {
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+.sendMessageForm {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  margin-top: 3rem;
+
+  background: $send-message-background-color;
+
+  label {
+    padding: 1.125rem 1.5rem;
+    font-size: 1.25rem;
+    background: $send-message-label;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  textarea {
+    background: transparent;
+    border: 0;
+    padding: 1.5rem;
+    resize: none;
+    height: 10rem;
+    color: $text-area-color;
+    font-size: 1rem;
+    line-height: 1.5rem;
+
+    &:focus {
+      outline: 0;
+    }
+
+    &::placeholder {
+      color: $text-area-placeholder-color;
+    }
+  }
+
+  button {
+    align-self: flex-end;
+    border: 0;
+    background: $send-message-button-background;
+    margin: 1.5rem;
+    padding: 0 2rem;
+    height: 2.5rem;
+    color: #fff;
+    cursor: pointer;
+
+    font-size: 0.875rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      margin-right: 1rem;
+    }
+
+    &:hover {
+      filter: brightness(0.9);
+    }
+  }
+}

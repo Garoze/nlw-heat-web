@@ -1,3 +1,4 @@
+import { io } from 'socket.io-client';
 import { useEffect, useState } from 'react';
 
 import { api } from '../../services/api';
@@ -16,8 +17,24 @@ type Message = {
   user: User;
 };
 
+const messagesQueue: Message[] = [];
+
+const socket = io('http://localhost:4000');
+socket.on('new_message', (message: Message) => messagesQueue.push(message));
+
 export const MessageList = () => {
   const [messages, setMessages] = useState<Message[]>([]);
+
+  useEffect(() => {
+    setInterval(() => {
+      if (messagesQueue.length > 0) {
+        setMessages((prev) =>
+          [messagesQueue[0], prev[0], prev[1]].filter(Boolean)
+        );
+        messagesQueue.shift();
+      }
+    }, 3000);
+  }, []);
 
   useEffect(() => {
     api.get<Message[]>('messages/last').then((response) => {
@@ -31,7 +48,7 @@ export const MessageList = () => {
       <ul className={styles.messageList}>
         {messages.map((message) => {
           return (
-            <li className={styles.message} key={message.id}>
+            <li key={message.id} className={styles.message}>
               <p className={styles.messageContent}>{message.message}</p>
               <div className={styles.messageUser}>
                 <div className={styles.userImage}>
