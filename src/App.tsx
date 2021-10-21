@@ -1,3 +1,13 @@
+import { LoginBox } from './components/LoginBox';
+import { MessageList } from './components/MessageList';
+
+import styles from './styles/App.module.scss';
+
 export const App = () => {
-  return <h1>Hello World!</h1>;
+  return (
+    <main className={styles.contentWrapper}>
+      <MessageList />
+      <LoginBox />
+    </main>
+  );
 };
